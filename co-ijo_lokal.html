@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chekout</title>
+    <style>
+        body {
+            min-height: 100vh;
+            background:url(bg-web.jpg) no-repeat;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        .product {
+            justify-content: center;
+            margin: 20px;
+            background: #d80505;
+            border-radius: 10px;
+            width: 400px;
+            height: 120px;
+            font-style: normal;
+        }
+        .product .p input {
+            width: 50px;
+            border-radius: 5px;
+        }
+        .product .p {
+            margin-left: 20px;
+        }
+        .total {
+            border-radius: 10px;
+            margin-left: 500px;
+            background: #ffffff67;
+            margin-top: -140px;
+            font-weight: bold;
+            width: 430px;
+            height: 210px;
+        }
+        .total .x {
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        .total .x a {
+            text-align: center;
+            margin-left: 2em;
+        } 
+        .total .x button {
+            height: 30px;
+            width: 200px;
+            margin-top: -10px;  
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="product">
+        <div class="p">
+        <h2>Nama Produk: kacang ijo lokal</h2>
+        <p>Harga: Rp.<span id="product-price">18000</span>/KG</p>
+        <input type="text" placeholder="Alamat">
+        <label for="quantity">Jumlah:</label>
+        <input type="number" id="quantity" value="1" min="1">
+        <button id="buy-button">Detail</button>
+        </div>
+    </div>
+
+    <div class="total" id="total-info" style="display: none;">
+        <div class="x">
+        <h3>Detail Pembelian:</h3>
+        <p>Nama Produk: <span id="total-product-name"></span></p>
+        <p>Harga Produk: Rp.<span id="total-product-price"></span></p>
+        <p>Jumlah Produk: <span id="total-quantity"></span></p>
+        <p>Total Harga: Rp.<span id="total-price"></span></p>
+        <a href="thx.html">
+            <button>Beli</button>
+        </a>
+        </div>
+    </div>
+
+    <script>
+        const buyButton = document.getElementById('buy-button');
+        const quantityInput = document.getElementById('quantity');
+        const productPriceElement = document.getElementById('product-price');
+
+        buyButton.addEventListener('click', function() {
+            const productName = "kacang hijau lokal";
+            const productPrice = parseFloat(productPriceElement.textContent);
+            const quantity = parseInt(quantityInput.value);
+            const totalPrice = productPrice * quantity;
+
+            // Menampilkan informasi total
+            document.getElementById('total-product-name').textContent = productName;
+            document.getElementById('total-product-price').textContent = productPrice.toFixed(2);
+            document.getElementById('total-quantity').textContent = quantity;
+            document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+            document.getElementById('total-info').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
